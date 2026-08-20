@@ -1,1 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Mortar Calculator 2 | HLL Calculators</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+
+    <style>
+
+        /* =========================
+           MAIN DISPLAY
+        ========================= */
+
+        .mortar2-display {
+
+            background: #f4f7fa;
+
+            border: 2px solid #dce3e9;
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            min-height: 95px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            font-size: 32px;
+
+            font-weight: 800;
+
+            color: #17202a;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .mortar2-display .result-number {
+
+            color: #0878e8;
+
+        }
+
+
+        /* =========================
+           CALCULATION HISTORY
+        ========================= */
+
+        .calculation-history {
+
+            min-height: 35px;
+
+            margin-bottom: 18px;
+
+            text-align: center;
+
+            color: #667585;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+        }
+
+
+        .calculation-history.active {
+
+            color: #17202a;
+
+        }
+
+
+        /* =========================
+           KEYPAD
+        ========================= */
+
+        .keypad {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 10px;
+
+        }
+
+
+        .key {
+
+            min-height: 68px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background: #eef2f6;
+
+            color: #17202a;
+
+            font-size: 25px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.12s;
+
+        }
+
+
+        .key:hover {
+
+            background: #dce5ed;
+
+        }
+
+
+        .key:active {
+
+            transform: scale(0.95);
+
+        }
+
+
+        /* =========================
+           DELETE / CLEAR
+        ========================= */
+
+        .delete-key {
+
+            background: #ffe8e8;
+
+            color: #c92a2a;
+
+        }
+
+
+        .delete-key:hover {
+
+            background: #ffd5d5;
+
+        }
+
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .mortar2-status {
+
+            margin-top: 18px;
+
+            text-align: center;
+
+            color: #667585;
+
+            font-size: 14px;
+
+            min-height: 20px;
+
+        }
+
+
+        .mortar2-status.error {
+
+            color: #c92a2a;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .key {
+
+                min-height: 64px;
+
+            }
+
+
+            .mortar2-display {
+
+                font-size: 28px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="site-header">
+
+    <div class="header-inner">
+
+
+        <a
+            href="../index.html"
+            class="logo"
+        >
+
+            <span class="logo-icon">
+                C
+            </span>
+
+            <span>
+                HLL Calculators
+            </span>
+
+        </a>
+
+
+        <a
+            href="../index.html"
+            class="back-link"
+        >
+            ← All Calculators
+        </a>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="calculator-page">
+
+
+    <div class="calculator-container">
+
+
+        <a
+            href="../index.html"
+            class="mobile-back"
+        >
+            ← Back to Calculators
+        </a>
+
+
+
+        <!-- CALCULATOR TITLE -->
+
+        <div class="calculator-header">
+
+
+            <div class="large-calculator-icon">
+                🌠
+            </div>
+
+
+            <div>
+
+                <span class="section-label">
+                    VIETNAM
+                </span>
+
+
+                <h1>
+                    Mortar Calculator 2
+                </h1>
+
+
+                <p>
+                    Enter distance using the keypad.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             CALCULATOR BOX
+        ========================= -->
+
+        <div class="calculator-box">
+
+
+            <label>
+                Distance
+            </label>
+
+
+
+            <!-- MAIN DISPLAY -->
+
+            <div
+                id="display"
+                class="mortar2-display"
+            >
+                Enter meters
+            </div>
+
+
+
+            <!-- HISTORY -->
+
+            <div
+                id="calculationHistory"
+                class="calculation-history"
+            >
+            </div>
+
+
+
+            <!-- =========================
+                 KEYPAD
+            ========================= -->
+
+            <div class="keypad">
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('1')"
+                >
+                    1
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('2')"
+                >
+                    2
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('3')"
+                >
+                    3
+                </button>
+
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('4')"
+                >
+                    4
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('5')"
+                >
+                    5
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('6')"
+                >
+                    6
+                </button>
+
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('7')"
+                >
+                    7
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('8')"
+                >
+                    8
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('9')"
+                >
+                    9
+                </button>
+
+
+
+                <button
+                    class="key delete-key"
+                    onclick="deleteKey()"
+                >
+                    Delete
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('0')"
+                >
+                    0
+                </button>
+
+
+                <button
+                    class="key delete-key"
+                    onclick="clearAll()"
+                >
+                    Clear
+                </button>
+
+
+            </div>
+
+
+
+            <!-- STATUS -->
+
+            <div
+                id="status"
+                class="mortar2-status"
+            >
+                Enter 100–450 meters.
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             INFORMATION
+        ========================= -->
+
+        <div class="calculator-info">
+
+
+            <div class="info-item">
+
+                <strong>
+                    Minimum
+                </strong>
+
+                <span>
+                    100 meters
+                </span>
+
+            </div>
+
+
+
+            <div class="info-item">
+
+                <strong>
+                    Maximum
+                </strong>
+
+                <span>
+                    450 meters
+                </span>
+
+            </div>
+
+
+
+            <div class="info-item">
+
+                <strong>
+                    Automatic
+                </strong>
+
+                <span>
+                    No Calculate button
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="site-footer">
+
+    <p>
+        © 2026 HLL Calculators
+    </p>
+
+    <p>
+        Fast tools built by Chewwy
+    </p>
+
+</footer>
+
+
+
+<script>
+
+    /*
+     * ========================================
+     * MORTAR 2 CALCULATOR
+     * ========================================
+     *
+     * Formula:
+     *
+     * Angle = -0.24 × meters + 108
+     *
+     * Valid distance:
+     *
+     * 100m - 450m
+     *
+     * Example:
+     *
+     * 123m = 78°
+     *
+     */
+
+
+
+    let value = "";
+
+    let finishedResult = false;
+
+    let resultTimer = null;
+
+
+
+    const display =
+        document.getElementById(
+            "display"
+        );
+
+
+    const status =
+        document.getElementById(
+            "status"
+        );
+
+
+    const calculationHistory =
+        document.getElementById(
+            "calculationHistory"
+        );
+
+
+
+    /* ========================================
+       NUMBER BUTTON
+    ======================================== */
+
+    function pressKey(number) {
+
+
+        /*
+         * If the previous calculation
+         * has finished, start fresh.
+         *
+         * IMPORTANT:
+         *
+         * We DO NOT erase the old history.
+         *
+         * This allows:
+         *
+         * 123m = 78°
+         *
+         * to remain visible while
+         * entering the next number.
+         */
+
+        if (finishedResult) {
+
+            value = "";
+
+            finishedResult = false;
+
+
+            if (resultTimer) {
+
+                clearTimeout(
+                    resultTimer
+                );
+
+                resultTimer = null;
+
+            }
+
+        }
+
+
+
+        /*
+         * Maximum 3 digits.
+         */
+
+        if (value.length >= 3) {
+
+            return;
+
+        }
+
+
+
+        /*
+         * Prevent leading zeroes.
+         */
+
+        if (value === "0") {
+
+            value = number;
+
+        }
+
+        else {
+
+            value += number;
+
+        }
+
+
+
+        updateCalculator();
+
+    }
+
+
+
+    /* ========================================
+       DELETE ONE DIGIT
+    ======================================== */
+
+    function deleteKey() {
+
+
+        /*
+         * If we're showing the finished
+         * angle, Delete starts fresh.
+         */
+
+        if (finishedResult) {
+
+            value = "";
+
+            finishedResult = false;
+
+
+            if (resultTimer) {
+
+                clearTimeout(
+                    resultTimer
+                );
+
+                resultTimer = null;
+
+            }
+
+
+            updateCalculator();
+
+            return;
+
+        }
+
+
+
+        /*
+         * Remove the last digit.
+         */
+
+        value =
+            value.slice(
+                0,
+                -1
+            );
+
+
+        updateCalculator();
+
+    }
+
+
+
+    /* ========================================
+       CLEAR
+    ======================================== */
+
+    function clearAll() {
+
+
+        value = "";
+
+        finishedResult = false;
+
+
+        if (resultTimer) {
+
+            clearTimeout(
+                resultTimer
+            );
+
+            resultTimer = null;
+
+        }
+
+
+
+        /*
+         * Clear the history too.
+         */
+
+        calculationHistory.textContent =
+            "";
+
+        calculationHistory.className =
+            "calculation-history";
+
+
+
+        updateCalculator();
+
+    }
+
+
+
+    /* ========================================
+       MAIN CALCULATOR
+    ======================================== */
+
+    function updateCalculator() {
+
+
+        /*
+         * Nothing entered.
+         */
+
+        if (value === "") {
+
+
+            display.textContent =
+                "Enter meters";
+
+
+            status.textContent =
+                "Enter 100–450 meters.";
+
+
+            status.className =
+                "mortar2-status";
+
+
+            return;
+
+        }
+
+
+
+        /*
+         * Convert input to number.
+         */
+
+        const meters =
+            parseInt(
+                value,
+                10
+            );
+
+
+
+        /* ====================================
+           BELOW 100
+        ==================================== */
+
+        if (meters < 100) {
+
+
+            display.textContent =
+                meters + "m";
+
+
+            status.textContent =
+                "Enter at least 100 meters.";
+
+
+            status.className =
+                "mortar2-status";
+
+
+            return;
+
+        }
+
+
+
+        /* ====================================
+           ABOVE 450
+        ==================================== */
+
+        if (meters > 450) {
+
+
+            display.textContent =
+                meters + "m";
+
+
+            status.textContent =
+                "Too Far — 450m Max";
+
+
+            status.className =
+                "mortar2-status error";
+
+
+            return;
+
+        }
+
+
+
+        /* ====================================
+           CALCULATE ANGLE
+        ==================================== */
+
+        const angle =
+            Math.round(
+                -0.24 * meters + 108
+            );
+
+
+
+        /*
+         * Create the complete text.
+         *
+         * Example:
+         *
+         * 123m = 78°
+         */
+
+        const calculationText =
+            meters +
+            "m = " +
+            angle +
+            "°";
+
+
+
+        /* ====================================
+           SHOW CURRENT CALCULATION
+        ==================================== */
+
+        display.innerHTML =
+            meters +
+            "m = " +
+            '<span class="result-number">' +
+            angle +
+            "°</span>";
+
+
+
+        status.textContent =
+            "Calculation complete.";
+
+
+        status.className =
+            "mortar2-status";
+
+
+
+        /*
+         * IMPORTANT:
+         *
+         * DO NOT replace the history here.
+         *
+         * The previous calculation stays visible
+         * while the new number is being entered.
+         */
+
+
+
+        /*
+         * Remove any previous timer.
+         */
+
+        if (resultTimer) {
+
+            clearTimeout(
+                resultTimer
+            );
+
+        }
+
+
+
+        /* ====================================
+           FOUR SECOND TIMER
+        ==================================== */
+
+        resultTimer =
+            setTimeout(
+                function() {
+
+
+                    /*
+                     * Change the big display
+                     * to ONLY the angle.
+                     *
+                     * Example:
+                     *
+                     * 78°
+                     */
+
+                    display.innerHTML =
+                        '<span class="result-number">' +
+                        angle +
+                        "°</span>";
+
+
+
+                    /*
+                     * NOW replace the history.
+                     *
+                     * Example:
+                     *
+                     * 150m = 72°
+                     */
+
+                    calculationHistory.textContent =
+                        calculationText;
+
+
+                    calculationHistory.className =
+                        "calculation-history active";
+
+
+
+                    /*
+                     * Ready for another
+                     * calculation.
+                     */
+
+                    status.textContent =
+                        "Ready for next distance.";
+
+
+                    status.className =
+                        "mortar2-status";
+
+
+
+                    finishedResult =
+                        true;
+
+
+                    resultTimer =
+                        null;
+
+
+                },
+                4000
+            );
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
