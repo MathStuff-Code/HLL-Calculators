@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mortar Calculator | HLL Calculators</title>
+    <meta
+        name="description"
+        content="Calculate mortar angle based on distance."
+    >
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+
+        <a href="../index.html" class="logo">
+            <span class="logo-icon">C</span>
+            <span>HLL Calculators</span>
+        </a>
+
+        <a href="../index.html" class="back-link">
+            ← All Calculators
+        </a>
+
+    </div>
+</header>
+
+
+<main class="calculator-page">
+
+    <div class="calculator-container">
+
+        <a href="../index.html" class="mobile-back">
+            ← Back to Calculators
+        </a>
+
+        <div class="calculator-header">
+
+            <div class="large-calculator-icon">
+                🌠
+            </div>
+
+            <div>
+                <span class="section-label">
+                    VIETNAM
+                </span>
+
+                <h1>Mortar Calculator</h1>
+
+                <p>
+                    Calculate the angle based on distance.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="calculator-box">
+
+            <label for="meters">
+                Distance
+            </label>
+
+            <div class="input-wrapper">
+
+                <input
+                    type="number"
+                    id="meters"
+                    placeholder="Enter distance"
+                    step="any"
+                    min="0"
+                    autocomplete="off"
+                >
+
+                <span>meters</span>
+
+            </div>
+
+
+            <button id="calculateButton">
+                Calculate Angle
+            </button>
+
+
+            <div class="result">
+
+                <div class="result-label">
+                    REQUIRED ANGLE
+                </div>
+
+                <div id="angle">
+                    50°
+                </div>
+
+                <div id="resultMessage" class="result-message">
+                    Enter a distance between 100 and 450 meters.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="calculator-info">
+
+            <div class="info-item">
+                <strong>Minimum</strong>
+                <span>100 meters</span>
+            </div>
+
+            <div class="info-item">
+                <strong>Maximum</strong>
+                <span>450 meters</span>
+            </div>
+
+            <div class="info-item">
+                <strong>Result</strong>
+                <span>Nearest degree</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer class="site-footer">
+    <p>© 2026 HLL Calculators</p>
+    <p>Fast tools built by Chewwy.</p>
+</footer>
+
+
+<script>
+
+    const metersInput =
+        document.getElementById("meters");
+
+    const angleElement =
+        document.getElementById("angle");
+
+    const resultMessage =
+        document.getElementById("resultMessage");
+
+    const calculateButton =
+        document.getElementById("calculateButton");
+
+
+    function calculate() {
+
+        const meters =
+            parseFloat(metersInput.value);
+
+
+        if (isNaN(meters)) {
+
+            angleElement.textContent = "--°";
+
+            resultMessage.textContent =
+                "Please enter a distance.";
+
+            resultMessage.className =
+                "result-message error";
+
+            return;
+        }
+
+
+        if (meters > 450) {
+
+            angleElement.textContent = "--";
+
+            resultMessage.textContent =
+                "Too far — 450 meters maximum.";
+
+            resultMessage.className =
+                "result-message error";
+
+            return;
+        }
+
+
+        if (meters < 100) {
+
+            angleElement.textContent = "--";
+
+            resultMessage.textContent =
+                "Too close — 100 meters minimum.";
+
+            resultMessage.className =
+                "result-message error";
+
+            return;
+        }
+
+
+        const result =
+            -0.24 * meters + 108;
+
+
+        angleElement.textContent =
+            Math.round(result) + "°";
+
+
+        resultMessage.textContent =
+            "Calculation complete.";
+
+        resultMessage.className =
+            "result-message success";
+    }
+
+
+    calculateButton.addEventListener(
+        "click",
+        calculate
+    );
+
+
+    metersInput.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Enter") {
+                calculate();
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
