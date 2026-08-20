@@ -1,27 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Calculator Hub</title>
+    <meta name="description" content="Professional calculators for All HLL Games.">
 
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <h1>Calculator Hub</h1>
+<header class="site-header">
+    <div class="header-inner">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">C</span>
+            <span>HLL Calculators</span>
+        </a>
 
-    <p>
-        Choose a calculator.
-    </p>
+        <div class="header-tagline">
+            Fast. Simple. Accurate.
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <section class="hero">
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                🛠️ BUILT FOR SPEED
+            </div>
+
+            <h1>
+                The calculators<br>
+                you actually need.
+            </h1>
+
+            <p>
+                Quick, simple calculators designed to help with
+                fast conversions.
+            </p>
+
+            <div class="search-box">
+                <span>🔍</span>
+                <input
+                    type="search"
+                    id="calculatorSearch"
+                    placeholder="Search calculators..."
+                    aria-label="Search calculators"
+                >
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="calculator-section">
+
+        <div class="section-heading">
+            <div>
+                <span class="section-label">CALCULATORS</span>
+                <h2>Choose a calculator</h2>
+            </div>
+
+            <span id="calculatorCount" class="calculator-count">
+                1 calculator
+            </span>
+        </div>
+
+
+        <div class="category-buttons">
+            <button class="category-btn active" data-category="all">
+                All
+            </button>
+
+            <button class="category-btn" data-category="WW2">
+                WW2
+            </button>
+
+            <button class="category-btn" data-category="Vietnam">
+                Vietnam
+            </button>
+
+            <button class="category-btn" data-category="other">
+                Other
+            </button>
+        </div>
+
+
+        <div class="calculator-grid" id="calculatorGrid">
+
+            <!-- Mortar Calculator -->
+            <a
+                href="calculators/mortar.html"
+                class="calculator-card"
+                data-name="mortar calculator"
+                data-category="Vietnam"
+            >
+                <div class="card-icon blue">
+                    🌠
+                </div>
+
+                <div class="card-content">
+                    <span class="card-category">
+                        VIETNAM
+                    </span>
+
+                    <h3>Mortar Calculator</h3>
+
+                    <p>
+                        Calculate the required mortar angle
+                        based on distance.
+                    </p>
+
+                    <span class="open-calculator">
+                        Open Calculator
+                        <span>→</span>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Mortar 2 Calculator -->
+            <a
+                href="calculators/mortar-2B.html"
+                class="calculator-card"
+                data-name="mortar 2 calculator"
+                data-category="Vietnam"
+            >
+                <div class="card-icon blue">
+                    🌠
+                </div>
+
+                <div class="card-content">
+
+                    <span class="card-category">
+                        VIETNAM
+                    </span>
+
+                    <h3>Mortar Calculator 2</h3>
+
+                    <p>
+                        Fast mortar angle calculator
+                        with an easy number keypad.
+                    </p>
+
+                    <span class="open-calculator">
+                        Open Calculator
+                        <span>→</span>
+                    </span>
+
+                </div>
+            </a>
+
+
+            <!-- Future Calculator -->
+            <div
+                class="calculator-card coming-soon"
+                data-name="artillery calculator"
+                data-category="WW2"
+            >
+                <div class="card-icon gray">
+                    💥
+                </div>
+
+                <div class="card-content">
+                    <span class="card-category">
+                        WW2
+                    </span>
+
+                    <h3>Artillery Calculator</h3>
+
+                    <p>
+                        Calculate the required artillery angle
+                        based on distance.
+                    </p>
+
+                    <span class="coming-soon-label">
+                        Coming Soon
+                    </span>
+                </div>
+            </div>
+
+
+            <!-- Future Calculator -->
+            <div
+                class="calculator-card coming-soon"
+                data-name="self-propelled arty calculator"
+                data-category="WW2"
+            >
+                <div class="card-icon gray">
+                    💥
+                </div>
+
+                <div class="card-content">
+                    <span class="card-category">
+                        WW2
+                    </span>
+
+                    <h3>Self-Propelled Arty Calculator</h3>
+
+                    <p>
+                        Calculate the required artillery angle
+                        based on distance and angle.
+                    </p>
+
+                    <span class="coming-soon-label">
+                        Coming Soon
+                    </span>
+                </div>
+            </div>
+
+
+            <!-- Future Calculator -->
+            <div
+                class="calculator-card coming-soon"
+                data-name="distance calculator"
+                data-category="measurement"
+            >
+                <div class="card-icon gray">
+                    📏
+                </div>
+
+                <div class="card-content">
+                    <span class="card-category">
+                        MEASUREMENT
+                    </span>
+
+                    <h3>Distance Calculator</h3>
+
+                    <p>
+                        Convert and calculate distances
+                        quickly and easily.
+                    </p>
+
+                    <span class="coming-soon-label">
+                        Coming Soon
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="noResults" class="no-results">
+            No calculators found.
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+    <p>© 2026 Calculator Hub</p>
+    <p>Fast tools built by Chewwy.</p>
+</footer>
+
+
+<script>
+    const searchInput = document.getElementById("calculatorSearch");
+    const cards = document.querySelectorAll(".calculator-card");
+    const categoryButtons = document.querySelectorAll(".category-btn");
+    const noResults = document.getElementById("noResults");
+    const calculatorCount = document.getElementById("calculatorCount");
+
+    let currentCategory = "all";
+
+    function filterCalculators() {
+
+        const searchTerm = searchInput.value
+            .toLowerCase()
+            .trim();
+
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+
+            const name = card.dataset.name.toLowerCase();
+            const category = card.dataset.category;
+
+            const matchesSearch =
+                name.includes(searchTerm);
+
+            const matchesCategory =
+                currentCategory === "all" ||
+                category === currentCategory;
+
+            if (matchesSearch && matchesCategory) {
+                card.style.display = "flex";
+                visibleCount++;
+            } else {
+                card.style.display = "none";
+            }
+
+        });
+
+        noResults.style.display =
+            visibleCount === 0 ? "block" : "none";
+
+        calculatorCount.textContent =
+            visibleCount === 1
+                ? "1 calculator"
+                : `${visibleCount} calculators`;
+    }
+
+
+    searchInput.addEventListener(
+        "input",
+        filterCalculators
+    );
+
+
+    categoryButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            categoryButtons.forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+            currentCategory =
+                button.dataset.category;
+
+            filterCalculators();
+        });
+
+    });
+</script>
 
 </body>
-
 </html>
