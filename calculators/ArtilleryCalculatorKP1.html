@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,8 +18,80 @@
         href="../css/style.css"
     >
 
-
     <style>
+
+        /* =========================
+           TOP SETTINGS
+        ========================= */
+
+        .top-settings {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .setting-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+
+        }
+
+
+        .setting-group label {
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            color: #667585;
+
+        }
+
+
+        .setting-select {
+
+            width: 100%;
+
+            min-height: 48px;
+
+            padding: 0 14px;
+
+            border: 2px solid #dce3e9;
+
+            border-radius: 10px;
+
+            background: #fff;
+
+            color: #17202a;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+        }
+
+
+        .setting-select:focus {
+
+            outline: none;
+
+            border-color: #0878e8;
+
+        }
+
 
         /* =========================
            MAIN DISPLAY
@@ -126,7 +199,6 @@
 
             transition: 0.12s;
 
-            /* Prevent double-tap zoom on mobile */
             touch-action: manipulation;
 
         }
@@ -195,10 +267,246 @@
 
 
         /* =========================
+           SETTINGS SECTION
+        ========================= */
+
+        .calculator-settings {
+
+            margin-top: 24px;
+
+            padding: 20px;
+
+            background: #f4f7fa;
+
+            border: 2px solid #dce3e9;
+
+            border-radius: 12px;
+
+        }
+
+
+        .calculator-settings h2 {
+
+            margin: 0 0 16px;
+
+            font-size: 20px;
+
+            color: #17202a;
+
+        }
+
+
+        .bottom-setting {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 14px 0;
+
+            border-top: 1px solid #dce3e9;
+
+        }
+
+
+        .bottom-setting:first-of-type {
+
+            border-top: none;
+
+        }
+
+
+        .bottom-setting-info {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 4px;
+
+        }
+
+
+        .bottom-setting-title {
+
+            font-weight: 700;
+
+            color: #17202a;
+
+        }
+
+
+        .bottom-setting-description {
+
+            color: #667585;
+
+            font-size: 13px;
+
+        }
+
+
+        .bottom-setting .setting-select {
+
+            width: 140px;
+
+            flex-shrink: 0;
+
+        }
+
+
+        /* =========================
+           DARK MODE
+        ========================= */
+
+        body.dark-mode {
+
+            background: #111820;
+
+            color: #e8edf2;
+
+        }
+
+
+        body.dark-mode .site-header {
+
+            background: #18212b;
+
+            border-color: #2a3744;
+
+        }
+
+
+        body.dark-mode .calculator-container {
+
+            color: #e8edf2;
+
+        }
+
+
+        body.dark-mode .calculator-box {
+
+            background: #18212b;
+
+            border-color: #2a3744;
+
+        }
+
+
+        body.dark-mode .artillery-display {
+
+            background: #111820;
+
+            border-color: #2a3744;
+
+            color: #e8edf2;
+
+        }
+
+
+        body.dark-mode .calculation-history.active {
+
+            color: #e8edf2;
+
+        }
+
+
+        body.dark-mode .key {
+
+            background: #26323e;
+
+            color: #e8edf2;
+
+        }
+
+
+        body.dark-mode .key:hover {
+
+            background: #334252;
+
+        }
+
+
+        body.dark-mode .delete-key {
+
+            background: #40272a;
+
+            color: #ff7777;
+
+        }
+
+
+        body.dark-mode .delete-key:hover {
+
+            background: #513033;
+
+        }
+
+
+        body.dark-mode .setting-select {
+
+            background: #111820;
+
+            border-color: #2a3744;
+
+            color: #e8edf2;
+
+        }
+
+
+        body.dark-mode .calculator-settings {
+
+            background: #18212b;
+
+            border-color: #2a3744;
+
+        }
+
+
+        body.dark-mode .calculator-settings h2,
+
+        body.dark-mode .bottom-setting-title {
+
+            color: #e8edf2;
+
+        }
+
+
+        body.dark-mode .bottom-setting {
+
+            border-color: #2a3744;
+
+        }
+
+
+        body.dark-mode .artillery-status,
+
+        body.dark-mode .calculation-history,
+
+        body.dark-mode .bottom-setting-description,
+
+        body.dark-mode .setting-group label {
+
+            color: #9aa9b7;
+
+        }
+
+
+        /* =========================
            MOBILE
         ========================= */
 
         @media (max-width: 600px) {
+
+            .top-settings {
+
+                grid-template-columns: 1fr;
+
+            }
+
 
             .key {
 
@@ -210,6 +518,24 @@
             .artillery-display {
 
                 font-size: 28px;
+
+            }
+
+
+            .bottom-setting {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                gap: 10px;
+
+            }
+
+
+            .bottom-setting .setting-select {
+
+                width: 100%;
 
             }
 
@@ -281,7 +607,72 @@
 
 
 
-        <!-- CALCULATOR TITLE -->
+        <!-- =========================
+             TOP SETTINGS
+        ========================= -->
+
+        <div class="top-settings">
+
+
+            <!-- FIRST DROPDOWN
+                 EMPTY FOR NOW -->
+
+            <div class="setting-group">
+
+                <label for="settingOne">
+                    Setting
+                </label>
+
+
+                <select
+                    id="settingOne"
+                    class="setting-select"
+                >
+
+                    <option value="">
+                        Select...
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- FACTION -->
+
+            <div class="setting-group">
+
+                <label for="factionSelect">
+                    Faction
+                </label>
+
+
+                <select
+                    id="factionSelect"
+                    class="setting-select"
+                >
+
+                    <option value="US">
+                        US
+                    </option>
+
+                    <option value="Russian">
+                        Russian
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             CALCULATOR TITLE
+        ========================= -->
 
         <div class="calculator-header">
 
@@ -523,6 +914,117 @@
         </div>
 
 
+
+        <!-- =========================
+             SETTINGS
+        ========================= -->
+
+        <div class="calculator-settings">
+
+
+            <h2>
+                Settings
+            </h2>
+
+
+
+            <!-- RESET TIME -->
+
+            <div class="bottom-setting">
+
+
+                <div class="bottom-setting-info">
+
+                    <span class="bottom-setting-title">
+                        Result Reset Time
+                    </span>
+
+
+                    <span class="bottom-setting-description">
+                        How long the result stays before switching to the angle only.
+                    </span>
+
+                </div>
+
+
+                <select
+                    id="resetTime"
+                    class="setting-select"
+                >
+
+                    <option value="1000">
+                        1 second
+                    </option>
+
+
+                    <option value="2000">
+                        2 seconds
+                    </option>
+
+
+                    <option value="3000">
+                        3 seconds
+                    </option>
+
+
+                    <option value="4000">
+                        4 seconds
+                    </option>
+
+
+                    <option value="off">
+                        Off
+                    </option>
+
+                </select>
+
+
+            </div>
+
+
+
+            <!-- THEME -->
+
+            <div class="bottom-setting">
+
+
+                <div class="bottom-setting-info">
+
+                    <span class="bottom-setting-title">
+                        Theme
+                    </span>
+
+
+                    <span class="bottom-setting-description">
+                        Choose light or dark appearance.
+                    </span>
+
+                </div>
+
+
+                <select
+                    id="themeSelect"
+                    class="setting-select"
+                >
+
+                    <option value="light">
+                        Light
+                    </option>
+
+
+                    <option value="dark">
+                        Dark
+                    </option>
+
+                </select>
+
+
+            </div>
+
+
+        </div>
+
+
     </div>
 
 </main>
@@ -535,13 +1037,16 @@
 
 <footer class="site-footer">
 
+
     <p>
         © 2026 HLL Calculators
     </p>
 
+
     <p>
         Fast tools built by Chewwy
     </p>
+
 
 </footer>
 
@@ -549,31 +1054,50 @@
 
 <script>
 
+
     /*
      * ========================================
-     * ARTILLERY CALCULATOR
+     * SETTINGS
      * ========================================
-     *
-     * Formula:
-     *
-     * truncate(
-     *     978
-     *     - (X - 100) × 0.237142857
-     *     + 0.4
-     * )
-     *
-     * Valid distance:
-     *
-     * 100m - 1600m
-     *
-     * truncate() removes the decimal portion.
-     *
-     * Example:
-     *
-     * 123m =
-     * truncate(978 - 23 × 0.237142857 + 0.4)
-     * = 972°
-     *
+     */
+
+
+    let resetTime =
+        localStorage.getItem(
+            "hll-reset-time"
+        ) || "4000";
+
+
+    let theme =
+        localStorage.getItem(
+            "hll-theme"
+        ) || "light";
+
+
+
+    const resetTimeSelect =
+        document.getElementById(
+            "resetTime"
+        );
+
+
+    const themeSelect =
+        document.getElementById(
+            "themeSelect"
+        );
+
+
+    const factionSelect =
+        document.getElementById(
+            "factionSelect"
+        );
+
+
+
+    /*
+     * ========================================
+     * CALCULATOR VARIABLES
+     * ========================================
      */
 
 
@@ -583,6 +1107,17 @@
 
     let resultTimer = null;
 
+    let currentAngle = null;
+
+    let currentCalculationText = "";
+
+
+
+    /*
+     * ========================================
+     * ELEMENTS
+     * ========================================
+     */
 
 
     const display =
@@ -604,26 +1139,146 @@
 
 
 
-    /* ========================================
-       NUMBER BUTTON
-    ======================================== */
+    /*
+     * ========================================
+     * LOAD SAVED SETTINGS
+     * ========================================
+     */
+
+
+    resetTimeSelect.value =
+        resetTime;
+
+
+    themeSelect.value =
+        theme;
+
+
+    applyTheme();
+
+
+
+    /*
+     * ========================================
+     * RESET TIME SETTING
+     * ========================================
+     */
+
+
+    resetTimeSelect.addEventListener(
+        "change",
+        function() {
+
+
+            resetTime =
+                this.value;
+
+
+            localStorage.setItem(
+                "hll-reset-time",
+                resetTime
+            );
+
+
+            /*
+             * If a result is currently
+             * being displayed, restart
+             * the timer using the new
+             * setting.
+             */
+
+            if (
+                currentAngle !== null &&
+                !finishedResult
+            ) {
+
+                restartResultTimer();
+
+            }
+
+        }
+    );
+
+
+
+    /*
+     * ========================================
+     * THEME SETTING
+     * ========================================
+     */
+
+
+    themeSelect.addEventListener(
+        "change",
+        function() {
+
+
+            theme =
+                this.value;
+
+
+            localStorage.setItem(
+                "hll-theme",
+                theme
+            );
+
+
+            applyTheme();
+
+        }
+    );
+
+
+
+    function applyTheme() {
+
+
+        if (theme === "dark") {
+
+            document.body.classList.add(
+                "dark-mode"
+            );
+
+        }
+
+        else {
+
+            document.body.classList.remove(
+                "dark-mode"
+            );
+
+        }
+
+    }
+
+
+
+    /*
+     * ========================================
+     * NUMBER BUTTON
+     * ========================================
+     */
+
 
     function pressKey(number) {
 
 
         /*
-         * If the previous calculation
-         * has finished, start fresh.
-         *
-         * The old calculation remains
-         * visible in the history.
+         * If a result has already finished,
+         * start a new calculation.
          */
 
         if (finishedResult) {
 
+
             value = "";
 
             finishedResult = false;
+
+            currentAngle = null;
+
+            currentCalculationText = "";
+
 
 
             if (resultTimer) {
@@ -636,14 +1291,20 @@
 
             }
 
+
+            calculationHistory.textContent =
+                "";
+
+
+            calculationHistory.className =
+                "calculation-history";
+
         }
 
 
 
         /*
          * Maximum 4 digits.
-         *
-         * Maximum distance is 1600.
          */
 
         if (value.length >= 4) {
@@ -678,23 +1339,32 @@
 
 
 
-    /* ========================================
-       DELETE ONE DIGIT
-    ======================================== */
+    /*
+     * ========================================
+     * DELETE ONE DIGIT
+     * ========================================
+     */
+
 
     function deleteKey() {
 
 
         /*
-         * If we're showing the finished
-         * result, Delete starts fresh.
+         * If showing a finished result,
+         * Delete starts fresh.
          */
 
         if (finishedResult) {
 
+
             value = "";
 
             finishedResult = false;
+
+            currentAngle = null;
+
+            currentCalculationText = "";
+
 
 
             if (resultTimer) {
@@ -708,6 +1378,14 @@
             }
 
 
+            calculationHistory.textContent =
+                "";
+
+
+            calculationHistory.className =
+                "calculation-history";
+
+
             updateCalculator();
 
             return;
@@ -717,7 +1395,7 @@
 
 
         /*
-         * Remove the last digit.
+         * Remove last digit.
          */
 
         value =
@@ -733,9 +1411,12 @@
 
 
 
-    /* ========================================
-       CLEAR
-    ======================================== */
+    /*
+     * ========================================
+     * CLEAR ALL
+     * ========================================
+     */
+
 
     function clearAll() {
 
@@ -743,6 +1424,11 @@
         value = "";
 
         finishedResult = false;
+
+        currentAngle = null;
+
+        currentCalculationText = "";
+
 
 
         if (resultTimer) {
@@ -757,12 +1443,9 @@
 
 
 
-        /*
-         * Clear the history too.
-         */
-
         calculationHistory.textContent =
             "";
+
 
         calculationHistory.className =
             "calculation-history";
@@ -775,9 +1458,12 @@
 
 
 
-    /* ========================================
-       MAIN CALCULATOR
-    ======================================== */
+    /*
+     * ========================================
+     * MAIN CALCULATOR
+     * ========================================
+     */
+
 
     function updateCalculator() {
 
@@ -819,9 +1505,11 @@
 
 
 
-        /* ====================================
-           BELOW 100
-        ==================================== */
+        /*
+         * ====================================
+         * BELOW 100
+         * ====================================
+         */
 
         if (meters < 100) {
 
@@ -844,9 +1532,11 @@
 
 
 
-        /* ====================================
-           ABOVE 1600
-        ==================================== */
+        /*
+         * ====================================
+         * ABOVE 1600
+         * ====================================
+         */
 
         if (meters > 1600) {
 
@@ -869,20 +1559,75 @@
 
 
 
-        /* ====================================
-           CALCULATE
-        ==================================== */
+        /*
+         * ====================================
+         * CALCULATE
+         * ====================================
+         *
+         * US:
+         *
+         * truncate(
+         *     978
+         *     - (X - 100) × 0.237142857
+         *     + 0.4
+         * )
+         *
+         *
+         * Russian:
+         *
+         * truncate(
+         *     1141.3333333333
+         *     - X × 0.2133333333333
+         *     + 0.5
+         * )
+         *
+         */
 
-        const rawResult =
-            978 -
-            (meters - 100) *
-            0.237142857 +
-            0.4;
+
+        let rawResult;
 
 
 
         /*
-         * Truncate the decimal portion.
+         * US FORMULA
+         */
+
+        if (
+            factionSelect.value === "US"
+        ) {
+
+
+            rawResult =
+                978 -
+                (meters - 100) *
+                0.237142857 +
+                0.4;
+
+        }
+
+
+
+        /*
+         * RUSSIAN FORMULA
+         */
+
+        else if (
+            factionSelect.value === "Russian"
+        ) {
+
+
+            rawResult =
+                1141.3333333333 -
+                meters *
+                0.2133333333333 +
+                0.5;
+
+        }
+
+
+
+        /*
+         * Truncate decimal portion.
          */
 
         const angle =
@@ -893,11 +1638,7 @@
 
 
         /*
-         * Create the complete text.
-         *
-         * Example:
-         *
-         * 123m = 972°
+         * Full calculation text.
          */
 
         const calculationText =
@@ -908,9 +1649,18 @@
 
 
 
-        /* ====================================
-           SHOW CURRENT CALCULATION
-        ==================================== */
+        currentAngle =
+            angle;
+
+
+        currentCalculationText =
+            calculationText;
+
+
+
+        /*
+         * Show calculation.
+         */
 
         display.innerHTML =
             meters +
@@ -928,9 +1678,13 @@
             "artillery-status";
 
 
+        finishedResult =
+            false;
+
+
 
         /*
-         * Remove any previous timer.
+         * Remove previous timer.
          */
 
         if (resultTimer) {
@@ -939,72 +1693,243 @@
                 resultTimer
             );
 
+            resultTimer = null;
+
         }
 
 
 
-        /* ====================================
-           FOUR SECOND TIMER
-        ==================================== */
+        /*
+         * Start reset timer.
+         */
+
+        startResultTimer();
+
+    }
+
+
+
+    /*
+     * ========================================
+     * START RESULT TIMER
+     * ========================================
+     */
+
+
+    function startResultTimer() {
+
+
+        /*
+         * OFF:
+         *
+         * Never automatically change
+         * the display.
+         *
+         * Clr is required to clear it.
+         */
+
+        if (
+            resetTime === "off"
+        ) {
+
+            return;
+
+        }
+
+
+
+        const milliseconds =
+            parseInt(
+                resetTime,
+                10
+            );
+
+
 
         resultTimer =
             setTimeout(
-                function() {
-
-
-                    /*
-                     * Change the big display
-                     * to ONLY the angle.
-                     */
-
-                    display.innerHTML =
-                        '<span class="result-number">' +
-                        angle +
-                        "°</span>";
-
-
-
-                    /*
-                     * Replace the history
-                     * with the completed calculation.
-                     */
-
-                    calculationHistory.textContent =
-                        calculationText;
-
-
-                    calculationHistory.className =
-                        "calculation-history active";
-
-
-
-                    /*
-                     * Ready for another
-                     * calculation.
-                     */
-
-                    status.textContent =
-                        "Ready for next distance.";
-
-
-                    status.className =
-                        "artillery-status";
-
-
-
-                    finishedResult =
-                        true;
-
-
-                    resultTimer =
-                        null;
-
-
-                },
-                4000
+                finishResult,
+                milliseconds
             );
 
     }
+
+
+
+    /*
+     * ========================================
+     * RESTART RESULT TIMER
+     * ========================================
+     */
+
+
+    function restartResultTimer() {
+
+
+        if (resultTimer) {
+
+            clearTimeout(
+                resultTimer
+            );
+
+            resultTimer = null;
+
+        }
+
+
+
+        if (
+            currentAngle === null ||
+            resetTime === "off"
+        ) {
+
+            return;
+
+        }
+
+
+
+        if (!finishedResult) {
+
+            startResultTimer();
+
+        }
+
+    }
+
+
+
+    /*
+     * ========================================
+     * FINISH RESULT
+     * ========================================
+     */
+
+
+    function finishResult() {
+
+
+        if (
+            currentAngle === null
+        ) {
+
+            return;
+
+        }
+
+
+
+        /*
+         * Show only the angle.
+         */
+
+        display.innerHTML =
+            '<span class="result-number">' +
+            currentAngle +
+            "°</span>";
+
+
+
+        /*
+         * Show calculation in history.
+         */
+
+        calculationHistory.textContent =
+            currentCalculationText;
+
+
+        calculationHistory.className =
+            "calculation-history active";
+
+
+
+        status.textContent =
+            "Ready for next distance.";
+
+
+        status.className =
+            "artillery-status";
+
+
+        finishedResult =
+            true;
+
+
+        resultTimer =
+            null;
+
+    }
+
+
+
+    /*
+     * ========================================
+     * FACTION CHANGE
+     * ========================================
+     *
+     * Recalculate immediately when
+     * US / Russian is changed.
+     */
+
+    factionSelect.addEventListener(
+        "change",
+        function() {
+
+
+            if (
+                value !== ""
+            ) {
+
+
+                const meters =
+                    parseInt(
+                        value,
+                        10
+                    );
+
+
+                if (
+                    meters >= 100 &&
+                    meters <= 1600
+                ) {
+
+
+                    /*
+                     * If the old result was
+                     * already finished, make
+                     * the new faction calculation
+                     * a fresh calculation.
+                     */
+
+                    finishedResult =
+                        false;
+
+
+                    currentAngle =
+                        null;
+
+
+                    currentCalculationText =
+                        "";
+
+
+                    calculationHistory.textContent =
+                        "";
+
+
+                    calculationHistory.className =
+                        "calculation-history";
+
+
+                    updateCalculator();
+
+                }
+
+            }
+
+        }
+    );
+
 
 </script>
 
@@ -1012,3 +1937,4 @@
 </body>
 
 </html>
+```
