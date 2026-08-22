@@ -1,316 +1,637 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Calculator Hub</title>
-    <meta name="description" content="Professional calculators for All HLL Games.">
 
-    <link rel="stylesheet" href="css/style.css">
+    <meta
+        name="description"
+        content="Professional calculators for All HLL Games."
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
 </head>
+
 
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header class="site-header">
+
     <div class="header-inner">
-        <a href="index.html" class="logo">
-            <span class="logo-icon">C</span>
-            <span>HLL Calculators</span>
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+
+            <span class="logo-icon">
+                C
+            </span>
+
+            <span>
+                HLL Calculators
+            </span>
+
         </a>
+
 
         <div class="header-tagline">
             Fast. Simple. Accurate.
         </div>
+
     </div>
+
 </header>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
 
 <main>
 
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
     <section class="hero">
+
         <div class="hero-content">
+
 
             <div class="eyebrow">
                 🛠️ BUILT FOR SPEED
             </div>
+
 
             <h1>
                 The calculators<br>
                 you actually need.
             </h1>
 
+
             <p>
                 Quick, simple calculators designed to help with
                 fast conversions.
             </p>
 
+
+            <!-- SEARCH -->
+
             <div class="search-box">
-                <span>🔍</span>
+
+                <span>
+                    🔍
+                </span>
+
+
                 <input
                     type="search"
                     id="calculatorSearch"
                     placeholder="Search calculators..."
                     aria-label="Search calculators"
                 >
+
             </div>
 
+
         </div>
+
     </section>
 
 
+
+    <!-- =========================
+         CALCULATORS
+    ========================= -->
+
     <section class="calculator-section">
 
+
+        <!-- SECTION HEADER -->
+
         <div class="section-heading">
+
             <div>
-                <span class="section-label">CALCULATORS</span>
-                <h2>Choose a calculator</h2>
+
+                <span class="section-label">
+                    CALCULATORS
+                </span>
+
+
+                <h2>
+                    Choose a calculator
+                </h2>
+
             </div>
 
-            <span id="calculatorCount" class="calculator-count">
-                1 calculator
+
+            <span
+                id="calculatorCount"
+                class="calculator-count"
+            >
+                5 calculators
             </span>
+
         </div>
 
 
+
+        <!-- =========================
+             CATEGORY BUTTONS
+        ========================= -->
+
         <div class="category-buttons">
-            <button class="category-btn active" data-category="all">
+
+
+            <button
+                class="category-btn active"
+                data-category="all"
+            >
                 All
             </button>
 
-            <button class="category-btn" data-category="WW2">
+
+            <button
+                class="category-btn"
+                data-category="WW2"
+            >
                 WW2
             </button>
 
-            <button class="category-btn" data-category="Vietnam">
+
+            <button
+                class="category-btn"
+                data-category="Vietnam"
+            >
                 Vietnam
             </button>
 
-            <button class="category-btn" data-category="other">
+
+            <button
+                class="category-btn"
+                data-category="other"
+            >
                 Other
             </button>
+
+
         </div>
 
 
-        <div class="calculator-grid" id="calculatorGrid">
 
-            <!-- Mortar Calculator -->
+        <!-- =========================
+             CALCULATOR GRID
+        ========================= -->
+
+        <div
+            class="calculator-grid"
+            id="calculatorGrid"
+        >
+
+
+            <!-- =========================
+                 MORTAR CALCULATOR
+            ========================= -->
+
             <a
                 href="calculators/mortar.html"
                 class="calculator-card"
                 data-name="mortar calculator"
                 data-category="Vietnam"
             >
+
                 <div class="card-icon blue">
                     🌠
                 </div>
 
+
                 <div class="card-content">
+
                     <span class="card-category">
                         VIETNAM
                     </span>
 
-                    <h3>Mortar Calculator</h3>
+
+                    <h3>
+                        Mortar Calculator
+                    </h3>
+
 
                     <p>
                         Calculate the required mortar angle
                         based on distance.
                     </p>
 
+
                     <span class="open-calculator">
+
                         Open Calculator
-                        <span>→</span>
+
+                        <span>
+                            →
+                        </span>
+
                     </span>
+
                 </div>
+
             </a>
 
-            <!-- Mortar 2 Calculator -->
+
+
+            <!-- =========================
+                 MORTAR 2 CALCULATOR
+            ========================= -->
+
             <a
                 href="calculators/mortar-2B.html"
                 class="calculator-card"
                 data-name="mortar 2 calculator"
                 data-category="Vietnam"
             >
+
                 <div class="card-icon blue">
                     🌠
                 </div>
 
+
                 <div class="card-content">
+
 
                     <span class="card-category">
                         VIETNAM
                     </span>
 
-                    <h3>Mortar Calculator 2</h3>
+
+                    <h3>
+                        Mortar Calculator 2
+                    </h3>
+
 
                     <p>
                         Fast mortar angle calculator
                         with an easy number keypad.
                     </p>
 
+
                     <span class="open-calculator">
+
                         Open Calculator
-                        <span>→</span>
+
+                        <span>
+                            →
+                        </span>
+
                     </span>
 
+
                 </div>
+
             </a>
 
 
-            <!-- Artillery Calculator -->
+
+            <!-- =========================
+                 ARTILLERY CALCULATOR
+            ========================= -->
+
             <a
-                href="calculators/ArtilleryCalculatorKP1.html"
+                href="calculators/artillery.html"
                 class="calculator-card"
                 data-name="artillery calculator"
                 data-category="WW2"
             >
+
                 <div class="card-icon blue">
                     💥
                 </div>
-            
+
+
                 <div class="card-content">
-            
+
+
                     <span class="card-category">
                         WW2
                     </span>
-            
-                    <h3>Artillery Calculator</h3>
-            
+
+
+                    <h3>
+                        Artillery Calculator
+                    </h3>
+
+
                     <p>
                         Calculate the required artillery angle
                         based on distance.
                     </p>
-            
+
+
                     <span class="open-calculator">
+
                         Open Calculator
-                        <span>→</span>
+
+                        <span>
+                            →
+                        </span>
+
                     </span>
-            
+
+
                 </div>
+
             </a>
 
 
 
-            <!-- Future Calculator -->
+            <!-- =========================
+                 SELF-PROPELLED ARTY
+            ========================= -->
+
             <div
                 class="calculator-card coming-soon"
-                data-name="self-propelled arty calculator"
+                data-name="self propelled arty calculator"
                 data-category="WW2"
             >
+
                 <div class="card-icon gray">
                     💥
                 </div>
 
+
                 <div class="card-content">
+
+
                     <span class="card-category">
                         WW2
                     </span>
 
-                    <h3>Self-Propelled Arty Calculator</h3>
+
+                    <h3>
+                        Self-Propelled Arty Calculator
+                    </h3>
+
 
                     <p>
                         Calculate the required artillery angle
                         based on distance and angle.
                     </p>
 
+
                     <span class="coming-soon-label">
                         Coming Soon
                     </span>
+
+
                 </div>
+
             </div>
 
 
-            <!-- Future Calculator -->
+
+            <!-- =========================
+                 DISTANCE CALCULATOR
+            ========================= -->
+
             <div
                 class="calculator-card coming-soon"
                 data-name="distance calculator"
-                data-category="measurement"
+                data-category="other"
             >
+
                 <div class="card-icon gray">
                     📏
                 </div>
 
+
                 <div class="card-content">
+
+
                     <span class="card-category">
-                        MEASUREMENT
+                        OTHER
                     </span>
 
-                    <h3>Distance Calculator</h3>
+
+                    <h3>
+                        Distance Calculator
+                    </h3>
+
 
                     <p>
                         Convert and calculate distances
                         quickly and easily.
                     </p>
 
+
                     <span class="coming-soon-label">
                         Coming Soon
                     </span>
+
+
                 </div>
+
             </div>
+
 
         </div>
 
-        <div id="noResults" class="no-results">
+
+
+        <!-- =========================
+             NO RESULTS
+        ========================= -->
+
+        <div
+            id="noResults"
+            class="no-results"
+        >
             No calculators found.
         </div>
 
+
     </section>
+
 
 </main>
 
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer class="site-footer">
-    <p>© 2026 Calculator Hub</p>
-    <p>Fast tools built by Chewwy.</p>
+
+    <p>
+        © 2026 Calculator Hub
+    </p>
+
+
+    <p>
+        Fast tools built by Chewwy.
+    </p>
+
 </footer>
 
 
-<script>
-    const searchInput = document.getElementById("calculatorSearch");
-    const cards = document.querySelectorAll(".calculator-card");
-    const categoryButtons = document.querySelectorAll(".category-btn");
-    const noResults = document.getElementById("noResults");
-    const calculatorCount = document.getElementById("calculatorCount");
 
-    let currentCategory = "all";
+<!-- =========================
+     SEARCH / FILTER SCRIPT
+========================= -->
+
+<script>
+
+
+    const searchInput =
+        document.getElementById(
+            "calculatorSearch"
+        );
+
+
+    const cards =
+        document.querySelectorAll(
+            ".calculator-card"
+        );
+
+
+    const categoryButtons =
+        document.querySelectorAll(
+            ".category-btn"
+        );
+
+
+    const noResults =
+        document.getElementById(
+            "noResults"
+        );
+
+
+    const calculatorCount =
+        document.getElementById(
+            "calculatorCount"
+        );
+
+
+    let currentCategory =
+        "all";
+
+
+
+    /* =========================
+       FILTER CALCULATORS
+    ========================= */
 
     function filterCalculators() {
 
-        const searchTerm = searchInput.value
-            .toLowerCase()
-            .trim();
 
-        let visibleCount = 0;
+        const searchTerm =
+            searchInput.value
+                .toLowerCase()
+                .trim();
 
-        cards.forEach(card => {
 
-            const name = card.dataset.name.toLowerCase();
-            const category = card.dataset.category;
+        let visibleCount =
+            0;
 
-            const matchesSearch =
-                name.includes(searchTerm);
 
-            const matchesCategory =
-                currentCategory === "all" ||
-                category === currentCategory;
 
-            if (matchesSearch && matchesCategory) {
-                card.style.display = "flex";
-                visibleCount++;
-            } else {
-                card.style.display = "none";
+        cards.forEach(
+            card => {
+
+
+                const name =
+                    card.dataset.name
+                        .toLowerCase();
+
+
+                const category =
+                    card.dataset.category;
+
+
+
+                const matchesSearch =
+                    name.includes(
+                        searchTerm
+                    );
+
+
+
+                const matchesCategory =
+                    currentCategory === "all" ||
+                    category === currentCategory;
+
+
+
+                if (
+                    matchesSearch &&
+                    matchesCategory
+                ) {
+
+                    card.style.display =
+                        "flex";
+
+                    visibleCount++;
+
+                }
+
+                else {
+
+                    card.style.display =
+                        "none";
+
+                }
+
             }
+        );
 
-        });
+
+
+        /* =========================
+           NO RESULTS
+        ========================= */
 
         noResults.style.display =
-            visibleCount === 0 ? "block" : "none";
+            visibleCount === 0
+                ? "block"
+                : "none";
+
+
+
+        /* =========================
+           CALCULATOR COUNT
+        ========================= */
 
         calculatorCount.textContent =
             visibleCount === 1
                 ? "1 calculator"
                 : `${visibleCount} calculators`;
+
     }
 
+
+
+    /* =========================
+       SEARCH
+    ========================= */
 
     searchInput.addEventListener(
         "input",
@@ -318,24 +639,73 @@
     );
 
 
-    categoryButtons.forEach(button => {
 
-        button.addEventListener("click", () => {
+    /* =========================
+       CATEGORY BUTTONS
+    ========================= */
 
-            categoryButtons.forEach(btn => {
-                btn.classList.remove("active");
-            });
+    categoryButtons.forEach(
+        button => {
 
-            button.classList.add("active");
 
-            currentCategory =
-                button.dataset.category;
+            button.addEventListener(
+                "click",
+                () => {
 
-            filterCalculators();
-        });
 
-    });
+                    /* Remove active
+                       from all buttons */
+
+                    categoryButtons.forEach(
+                        btn => {
+
+                            btn.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+
+                    /* Activate
+                       selected button */
+
+                    button.classList.add(
+                        "active"
+                    );
+
+
+
+                    /* Update category */
+
+                    currentCategory =
+                        button.dataset.category;
+
+
+
+                    /* Refresh results */
+
+                    filterCalculators();
+
+                }
+            );
+
+        }
+    );
+
+
+
+    /* =========================
+       INITIAL FILTER
+    ========================= */
+
+    filterCalculators();
+
+
 </script>
 
+
 </body>
+
 </html>
