@@ -1,238 +1,1971 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mortar Calculator | HLL Calculators</title>
+<head>
+
+    <meta charset="UTF-8">
+
     <meta
-        name="description"
-        content="Calculate mortar angle based on distance."
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
     >
 
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Mortar Calculator | HLL Calculators</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <style>
+
+        /* =========================
+           TOP SETTINGS
+        ========================= */
+
+        .top-settings {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .setting-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+
+        }
+
+
+        .setting-group label {
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            color: #667585;
+
+        }
+
+
+        .setting-select {
+
+            width: 100%;
+
+            min-height: 48px;
+
+            padding: 0 14px;
+
+            border: 2px solid #dce3e9;
+
+            border-radius: 10px;
+
+            background: #fff;
+
+            color: #17202a;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+        }
+
+
+        .setting-select:focus {
+
+            outline: none;
+
+            border-color: #0878e8;
+
+        }
+
+
+        /* =========================
+           MAIN DISPLAY
+        ========================= */
+
+        .artillery-display {
+
+            background: #f4f7fa;
+
+            border: 2px solid #dce3e9;
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            min-height: 95px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            font-size: 32px;
+
+            font-weight: 800;
+
+            color: #17202a;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .artillery-display .result-number {
+
+            color: #0878e8;
+
+        }
+
+
+        /* =========================
+           CALCULATION HISTORY
+        ========================= */
+
+        .calculation-history {
+
+            min-height: 35px;
+
+            margin-bottom: 18px;
+
+            text-align: center;
+
+            color: #667585;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+        }
+
+
+        .calculation-history.active {
+
+            color: #17202a;
+
+        }
+
+
+        /* =========================
+           KEYPAD
+        ========================= */
+
+        .keypad {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 10px;
+
+        }
+
+
+        .key {
+
+            min-height: 68px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background: #eef2f6;
+
+            color: #17202a;
+
+            font-size: 25px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.12s;
+
+            touch-action: manipulation;
+
+        }
+
+
+        .key:hover {
+
+            background: #dce5ed;
+
+        }
+
+
+        .key:active {
+
+            transform: scale(0.95);
+
+        }
+
+
+        /* =========================
+           DELETE / CLEAR
+        ========================= */
+
+        .delete-key {
+
+            background: #ffe8e8;
+
+            color: #c92a2a;
+
+        }
+
+
+        .delete-key:hover {
+
+            background: #ffd5d5;
+
+        }
+
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .artillery-status {
+
+            margin-top: 18px;
+
+            text-align: center;
+
+            color: #667585;
+
+            font-size: 14px;
+
+            min-height: 20px;
+
+        }
+
+
+        .artillery-status.error {
+
+            color: #c92a2a;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =========================
+           SETTINGS SECTION
+        ========================= */
+
+        .calculator-settings {
+
+            margin-top: 24px;
+
+            padding: 20px;
+
+            background: #f4f7fa;
+
+            border: 2px solid #dce3e9;
+
+            border-radius: 12px;
+
+        }
+
+
+        .calculator-settings h2 {
+
+            margin: 0 0 16px;
+
+            font-size: 20px;
+
+            color: #17202a;
+
+        }
+
+
+        .bottom-setting {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 14px 0;
+
+            border-top: 1px solid #dce3e9;
+
+        }
+
+
+        .bottom-setting:first-of-type {
+
+            border-top: none;
+
+        }
+
+
+        .bottom-setting-info {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 4px;
+
+        }
+
+
+        .bottom-setting-title {
+
+            font-weight: 700;
+
+            color: #17202a;
+
+        }
+
+
+        .bottom-setting-description {
+
+            color: #667585;
+
+            font-size: 13px;
+
+        }
+
+
+        .bottom-setting .setting-select {
+
+            width: 140px;
+
+            flex-shrink: 0;
+
+        }
+
+
+        /* =========================
+           DARK MODE
+        ========================= */
+
+        body.dark-mode {
+
+            background: #111820;
+
+            color: #e8edf2;
+
+        }
+
+
+        body.dark-mode .site-header {
+
+            background: #18212b;
+
+            border-color: #2a3744;
+
+        }
+
+
+        body.dark-mode .calculator-container {
+
+            color: #e8edf2;
+
+        }
+
+
+        body.dark-mode .calculator-box {
+
+            background: #18212b;
+
+            border-color: #2a3744;
+
+        }
+
+
+        body.dark-mode .artillery-display {
+
+            background: #111820;
+
+            border-color: #2a3744;
+
+            color: #e8edf2;
+
+        }
+
+
+        body.dark-mode .calculation-history.active {
+
+            color: #e8edf2;
+
+        }
+
+
+        body.dark-mode .key {
+
+            background: #26323e;
+
+            color: #e8edf2;
+
+        }
+
+
+        body.dark-mode .key:hover {
+
+            background: #334252;
+
+        }
+
+
+        body.dark-mode .delete-key {
+
+            background: #40272a;
+
+            color: #ff7777;
+
+        }
+
+
+        body.dark-mode .delete-key:hover {
+
+            background: #513033;
+
+        }
+
+
+        body.dark-mode .setting-select {
+
+            background: #111820;
+
+            border-color: #2a3744;
+
+            color: #e8edf2;
+
+        }
+
+
+        body.dark-mode .calculator-settings {
+
+            background: #18212b;
+
+            border-color: #2a3744;
+
+        }
+
+
+        body.dark-mode .calculator-settings h2,
+
+        body.dark-mode .bottom-setting-title {
+
+            color: #e8edf2;
+
+        }
+
+
+        body.dark-mode .bottom-setting {
+
+            border-color: #2a3744;
+
+        }
+
+
+        body.dark-mode .artillery-status,
+
+        body.dark-mode .calculation-history,
+
+        body.dark-mode .bottom-setting-description,
+
+        body.dark-mode .setting-group label {
+
+            color: #9aa9b7;
+
+        }
+
+
+        /* =========================
+           INFORMATION SECTION
+        ========================= */
+
+        body.dark-mode .calculator-info .info-item strong {
+
+            color: #e8edf2 !important;
+
+        }
+
+
+        body.dark-mode .calculator-info .info-item span {
+
+            color: #9aa9b7 !important;
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .top-settings {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .key {
+
+                min-height: 64px;
+
+            }
+
+
+            .artillery-display {
+
+                font-size: 28px;
+
+            }
+
+
+            .bottom-setting {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                gap: 10px;
+
+            }
+
+
+            .bottom-setting .setting-select {
+
+                width: 100%;
+
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header class="site-header">
+
     <div class="header-inner">
 
-        <a href="../index.html" class="logo">
-            <span class="logo-icon">C</span>
-            <span>HLL Calculators</span>
+
+        <a
+            href="../index.html"
+            class="logo"
+        >
+
+            <span class="logo-icon">
+                C
+            </span>
+
+            <span>
+                HLL Calculators
+            </span>
+
         </a>
 
-        <a href="../index.html" class="back-link">
+
+        <a
+            href="../index.html"
+            class="back-link"
+        >
             ← All Calculators
         </a>
 
+
     </div>
+
 </header>
 
 
+
+<!-- =========================
+     MAIN
+========================= -->
+
 <main class="calculator-page">
+
 
     <div class="calculator-container">
 
-        <a href="../index.html" class="mobile-back">
+
+        <a
+            href="../index.html"
+            class="mobile-back"
+        >
             ← Back to Calculators
         </a>
 
-        <div class="calculator-header">
 
-            <div class="large-calculator-icon">
-                🌠
+
+        <!-- =========================
+             TOP SETTINGS
+        ========================= -->
+
+        <div class="top-settings">
+
+
+            <!-- FACTION
+                 EMPTY FOR NOW -->
+
+            <div class="setting-group">
+
+                <label for="factionSelect">
+                    Faction
+                </label>
+
+
+                <select
+                    id="factionSelect"
+                    class="setting-select"
+                >
+
+                    <option value="">
+                        Select...
+                    </option>
+
+                </select>
+
             </div>
 
-            <div>
-                <span class="section-label">
-                    VIETNAM
-                </span>
-
-                <h1>Mortar Calculator</h1>
-
-                <p>
-                    Calculate the angle based on distance.
-                </p>
-            </div>
 
         </div>
 
+
+
+        <!-- =========================
+             CALCULATOR TITLE
+        ========================= -->
+
+        <div class="calculator-header">
+
+
+            <div class="large-calculator-icon">
+                💥
+            </div>
+
+
+            <div>
+
+                <span class="section-label">
+                    Vietnam
+                </span>
+
+
+                <h1>
+                    Mortar Calculator
+                </h1>
+
+
+                <p>
+                    Enter distance using the keypad.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             CALCULATOR BOX
+        ========================= -->
 
         <div class="calculator-box">
 
-            <label for="meters">
+
+            <label>
                 Distance
             </label>
 
-            <div class="input-wrapper">
 
-                <input
-                    type="number"
-                    id="meters"
-                    placeholder="Enter distance"
-                    step="any"
-                    min="0"
-                    autocomplete="off"
+
+            <!-- MAIN DISPLAY -->
+
+            <div
+                id="display"
+                class="artillery-display"
+            >
+                Enter meters
+            </div>
+
+
+
+            <!-- HISTORY -->
+
+            <div
+                id="calculationHistory"
+                class="calculation-history"
+            >
+            </div>
+
+
+
+            <!-- =========================
+                 KEYPAD
+            ========================= -->
+
+            <div class="keypad">
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('1')"
                 >
+                    1
+                </button>
 
-                <span>meters</span>
+
+                <button
+                    class="key"
+                    onclick="pressKey('2')"
+                >
+                    2
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('3')"
+                >
+                    3
+                </button>
+
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('4')"
+                >
+                    4
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('5')"
+                >
+                    5
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('6')"
+                >
+                    6
+                </button>
+
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('7')"
+                >
+                    7
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('8')"
+                >
+                    8
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('9')"
+                >
+                    9
+                </button>
+
+
+
+                <button
+                    class="key delete-key"
+                    onclick="deleteKey()"
+                >
+                    Del
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="pressKey('0')"
+                >
+                    0
+                </button>
+
+
+                <button
+                    class="key delete-key"
+                    onclick="clearAll()"
+                >
+                    Clr
+                </button>
+
 
             </div>
 
 
-            <button id="calculateButton">
-                Calculate Angle
-            </button>
 
+            <!-- STATUS -->
 
-            <div class="result">
-
-                <div class="result-label">
-                    REQUIRED ANGLE
-                </div>
-
-                <div id="angle">
-                    50°
-                </div>
-
-                <div id="resultMessage" class="result-message">
-                    Enter a distance between 100 and 450 meters.
-                </div>
-
+            <div
+                id="status"
+                class="artillery-status"
+            >
+                Enter 100–450 meters.
             </div>
+
 
         </div>
 
+
+
+        <!-- =========================
+             INFORMATION
+        ========================= -->
 
         <div class="calculator-info">
 
-            <div class="info-item">
-                <strong>Minimum</strong>
-                <span>100 meters</span>
-            </div>
 
             <div class="info-item">
-                <strong>Maximum</strong>
-                <span>450 meters</span>
+
+                <strong>
+                    Minimum
+                </strong>
+
+                <span>
+                    100 meters
+                </span>
+
             </div>
 
+
+
             <div class="info-item">
-                <strong>Result</strong>
-                <span>Nearest degree</span>
+
+                <strong>
+                    Maximum
+                </strong>
+
+                <span>
+                    450 meters
+                </span>
+
             </div>
+
+
+
+            <div class="info-item">
+
+                <strong>
+                    Automatic
+                </strong>
+
+                <span>
+                    No Calculate button
+                </span>
+
+            </div>
+
 
         </div>
+
+
+
+        <!-- =========================
+             SETTINGS
+        ========================= -->
+
+        <div class="calculator-settings">
+
+
+            <h2>
+                Settings
+            </h2>
+
+
+
+            <!-- RESET TIME -->
+
+            <div class="bottom-setting">
+
+
+                <div class="bottom-setting-info">
+
+                    <span class="bottom-setting-title">
+                        Result Reset Time
+                    </span>
+
+
+                    <span class="bottom-setting-description">
+                        How long the result stays before switching to the angle only.
+                    </span>
+
+                </div>
+
+
+                <select
+                    id="resetTime"
+                    class="setting-select"
+                >
+
+                    <option value="1000">
+                        1 second
+                    </option>
+
+
+                    <option value="2000">
+                        2 seconds
+                    </option>
+
+
+                    <option value="3000">
+                        3 seconds
+                    </option>
+
+
+                    <option value="4000">
+                        4 seconds
+                    </option>
+
+
+                    <option value="off">
+                        Off
+                    </option>
+
+                </select>
+
+
+            </div>
+
+
+
+            <!-- THEME -->
+
+            <div class="bottom-setting">
+
+
+                <div class="bottom-setting-info">
+
+                    <span class="bottom-setting-title">
+                        Theme
+                    </span>
+
+
+                    <span class="bottom-setting-description">
+                        Choose light or dark appearance.
+                    </span>
+
+                </div>
+
+
+                <select
+                    id="themeSelect"
+                    class="setting-select"
+                >
+
+                    <option value="light">
+                        Light
+                    </option>
+
+
+                    <option value="dark">
+                        Dark
+                    </option>
+
+                </select>
+
+
+            </div>
+
+
+        </div>
+
 
     </div>
 
 </main>
 
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer class="site-footer">
-    <p>© 2026 HLL Calculators</p>
-    <p>Fast tools built by Chewwy.</p>
+
+
+    <p>
+        © 2026 HLL Calculators
+    </p>
+
+
+    <p>
+        Fast tools built by Chewwy
+    </p>
+
+
+    <p>
+        Build 1
+    </p>
+
+
 </footer>
+
 
 
 <script>
 
-    const metersInput =
-        document.getElementById("meters");
 
-    const angleElement =
-        document.getElementById("angle");
-
-    const resultMessage =
-        document.getElementById("resultMessage");
-
-    const calculateButton =
-        document.getElementById("calculateButton");
+    /*
+     * ========================================
+     * SETTINGS
+     * ========================================
+     */
 
 
-    function calculate() {
-
-        const meters =
-            parseFloat(metersInput.value);
-
-
-        if (isNaN(meters)) {
-
-            angleElement.textContent = "--°";
-
-            resultMessage.textContent =
-                "Please enter a distance.";
-
-            resultMessage.className =
-                "result-message error";
-
-            return;
-        }
+    let resetTime =
+        localStorage.getItem(
+            "hll-mortar-reset-time"
+        ) || "4000";
 
 
-        if (meters > 450) {
-
-            angleElement.textContent = "--";
-
-            resultMessage.textContent =
-                "Too far — 450 meters maximum.";
-
-            resultMessage.className =
-                "result-message error";
-
-            return;
-        }
+    let theme =
+        localStorage.getItem(
+            "hll-theme"
+        ) || "light";
 
 
-        if (meters < 100) {
 
-            angleElement.textContent = "--";
-
-            resultMessage.textContent =
-                "Too close — 100 meters minimum.";
-
-            resultMessage.className =
-                "result-message error";
-
-            return;
-        }
+    const resetTimeSelect =
+        document.getElementById(
+            "resetTime"
+        );
 
 
-        const result =
-            -0.24 * meters + 108;
+    const themeSelect =
+        document.getElementById(
+            "themeSelect"
+        );
 
 
-        angleElement.textContent =
-            Math.round(result) + "°";
+    const factionSelect =
+        document.getElementById(
+            "factionSelect"
+        );
 
 
-        resultMessage.textContent =
-            "Calculation complete.";
 
-        resultMessage.className =
-            "result-message success";
-    }
-
-
-    calculateButton.addEventListener(
-        "click",
-        calculate
-    );
+    /*
+     * ========================================
+     * CALCULATOR VARIABLES
+     * ========================================
+     */
 
 
-    metersInput.addEventListener(
-        "keydown",
-        function(event) {
+    let value = "";
 
-            if (event.key === "Enter") {
-                calculate();
+    let finishedResult = false;
+
+    let resultTimer = null;
+
+    let currentResult = null;
+
+    let currentCalculationText = "";
+
+
+
+    /*
+     * ========================================
+     * ELEMENTS
+     * ========================================
+     */
+
+
+    const display =
+        document.getElementById(
+            "display"
+        );
+
+
+    const status =
+        document.getElementById(
+            "status"
+        );
+
+
+    const calculationHistory =
+        document.getElementById(
+            "calculationHistory"
+        );
+
+
+
+    /*
+     * ========================================
+     * MAPPING POINTS
+     * ========================================
+     *
+     * Distance -> Angle
+     *
+     * Linear interpolation is used
+     * between each pair of points.
+     *
+     * ========================================
+     */
+
+    const points = [
+
+        [450, 0],
+
+        [425, 6],
+
+        [400, 12],
+
+        [375, 18],
+
+        [350, 24],
+
+        [325, 30],
+
+        [300, 36],
+
+        [275, 43],
+
+        [250, 49],
+
+        [225, 55],
+
+        [200, 61],
+
+        [175, 67],
+
+        [150, 73],
+
+        [125, 79],
+
+        [100, 85]
+
+    ];
+
+
+
+    /*
+     * ========================================
+     * LOAD SAVED SETTINGS
+     * ========================================
+     */
+
+
+    resetTimeSelect.value =
+        resetTime;
+
+
+    themeSelect.value =
+        theme;
+
+
+    applyTheme();
+
+
+
+    /*
+     * ========================================
+     * RESET TIME SETTING
+     * ========================================
+     */
+
+
+    resetTimeSelect.addEventListener(
+        "change",
+        function() {
+
+
+            resetTime =
+                this.value;
+
+
+            localStorage.setItem(
+                "hll-mortar-reset-time",
+                resetTime
+            );
+
+
+            if (
+                currentResult !== null &&
+                !finishedResult
+            ) {
+
+                restartResultTimer();
+
             }
 
         }
     );
 
+
+
+    /*
+     * ========================================
+     * THEME SETTING
+     * ========================================
+     */
+
+
+    themeSelect.addEventListener(
+        "change",
+        function() {
+
+
+            theme =
+                this.value;
+
+
+            localStorage.setItem(
+                "hll-theme",
+                theme
+            );
+
+
+            applyTheme();
+
+        }
+    );
+
+
+
+    function applyTheme() {
+
+
+        if (theme === "dark") {
+
+            document.body.classList.add(
+                "dark-mode"
+            );
+
+        }
+
+        else {
+
+            document.body.classList.remove(
+                "dark-mode"
+            );
+
+        }
+
+    }
+
+
+
+    /*
+     * ========================================
+     * NUMBER BUTTON
+     * ========================================
+     */
+
+
+    function pressKey(number) {
+
+
+        /*
+         * If the previous result has
+         * finished, begin a new input.
+         */
+
+        if (finishedResult) {
+
+
+            value = "";
+
+            finishedResult = false;
+
+            currentResult = null;
+
+            currentCalculationText = "";
+
+
+
+            if (resultTimer) {
+
+                clearTimeout(
+                    resultTimer
+                );
+
+                resultTimer = null;
+
+            }
+
+
+            calculationHistory.textContent =
+                "";
+
+
+            calculationHistory.className =
+                "calculation-history";
+
+        }
+
+
+
+        /*
+         * Maximum 3 digits.
+         */
+
+        if (value.length >= 3) {
+
+            return;
+
+        }
+
+
+
+        /*
+         * Prevent leading zeroes.
+         */
+
+        if (value === "0") {
+
+            value = number;
+
+        }
+
+        else {
+
+            value += number;
+
+        }
+
+
+
+        updateCalculator();
+
+    }
+
+
+
+    /*
+     * ========================================
+     * DELETE ONE DIGIT
+     * ========================================
+     */
+
+
+    function deleteKey() {
+
+
+        /*
+         * If showing a finished result,
+         * Delete starts fresh.
+         */
+
+        if (finishedResult) {
+
+
+            value = "";
+
+            finishedResult = false;
+
+            currentResult = null;
+
+            currentCalculationText = "";
+
+
+
+            if (resultTimer) {
+
+                clearTimeout(
+                    resultTimer
+                );
+
+                resultTimer = null;
+
+            }
+
+
+            calculationHistory.textContent =
+                "";
+
+
+            calculationHistory.className =
+                "calculation-history";
+
+
+            updateCalculator();
+
+            return;
+
+        }
+
+
+
+        /*
+         * Remove the last digit.
+         */
+
+        value =
+            value.slice(
+                0,
+                -1
+            );
+
+
+        updateCalculator();
+
+    }
+
+
+
+    /*
+     * ========================================
+     * CLEAR ALL
+     * ========================================
+     */
+
+
+    function clearAll() {
+
+
+        value = "";
+
+        finishedResult = false;
+
+        currentResult = null;
+
+        currentCalculationText = "";
+
+
+
+        if (resultTimer) {
+
+            clearTimeout(
+                resultTimer
+            );
+
+            resultTimer = null;
+
+        }
+
+
+
+        calculationHistory.textContent =
+            "";
+
+
+        calculationHistory.className =
+            "calculation-history";
+
+
+
+        updateCalculator();
+
+    }
+
+
+
+    /*
+     * ========================================
+     * CALCULATE MORTAR ANGLE
+     * ========================================
+     */
+
+
+    function calculateAngle(x) {
+
+
+        /*
+         * Exact upper point.
+         */
+
+        if (x === 450) {
+
+            return 0;
+
+        }
+
+
+
+        /*
+         * Exact lower point.
+         */
+
+        if (x === 100) {
+
+            return 85;
+
+        }
+
+
+
+        /*
+         * Find the two points surrounding
+         * the requested distance.
+         */
+
+        for (
+            let i = 0;
+            i < points.length - 1;
+            i++
+        ) {
+
+
+            const [x1, y1] =
+                points[i];
+
+
+            const [x2, y2] =
+                points[i + 1];
+
+
+
+            if (
+                x <= x1 &&
+                x >= x2
+            ) {
+
+
+                /*
+                 * Linear interpolation:
+                 *
+                 * y =
+                 * y1 +
+                 * ((x - x1) / (x2 - x1))
+                 * *
+                 * (y2 - y1)
+                 */
+
+                return (
+                    y1 +
+                    (
+                        (x - x1) /
+                        (x2 - x1)
+                    ) *
+                    (y2 - y1)
+                );
+
+            }
+
+        }
+
+
+
+        return null;
+
+    }
+
+
+
+    /*
+     * ========================================
+     * MAIN CALCULATOR
+     * ========================================
+     */
+
+
+    function updateCalculator() {
+
+
+        /*
+         * Nothing entered.
+         */
+
+        if (value === "") {
+
+
+            display.textContent =
+                "Enter meters";
+
+
+            status.textContent =
+                "Enter 100–450 meters.";
+
+
+            status.className =
+                "artillery-status";
+
+
+            return;
+
+        }
+
+
+
+        /*
+         * Convert input to number.
+         */
+
+        const meters =
+            parseInt(
+                value,
+                10
+            );
+
+
+
+        /*
+         * ====================================
+         * BELOW 100
+         * ====================================
+         */
+
+        if (meters < 100) {
+
+
+            display.textContent =
+                meters + "m";
+
+
+            status.textContent =
+                "Enter at least 100 meters.";
+
+
+            status.className =
+                "artillery-status";
+
+
+            return;
+
+        }
+
+
+
+        /*
+         * ====================================
+         * ABOVE 450
+         * ====================================
+         */
+
+        if (meters > 450) {
+
+
+            display.textContent =
+                meters + "m";
+
+
+            status.textContent =
+                "Too Far — 450m Max";
+
+
+            status.className =
+                "artillery-status error";
+
+
+            return;
+
+        }
+
+
+
+        /*
+         * ====================================
+         * CALCULATE
+         * ====================================
+         */
+
+        const calculatedAngle =
+            calculateAngle(
+                meters
+            );
+
+
+
+        if (
+            calculatedAngle === null
+        ) {
+
+            return;
+
+        }
+
+
+
+        /*
+         * Two decimal places.
+         */
+
+        const result =
+            calculatedAngle.toFixed(2);
+
+
+
+        currentResult =
+            result;
+
+
+
+        currentCalculationText =
+            meters +
+            "m = " +
+            result +
+            "°";
+
+
+
+        /*
+         * Show calculation immediately.
+         */
+
+        display.innerHTML =
+            meters +
+            "m = " +
+            '<span class="result-number">' +
+            result +
+            "°</span>";
+
+
+        status.textContent =
+            "Calculation complete.";
+
+
+        status.className =
+            "artillery-status";
+
+
+        finishedResult =
+            false;
+
+
+
+        /*
+         * Remove previous timer.
+         */
+
+        if (resultTimer) {
+
+            clearTimeout(
+                resultTimer
+            );
+
+            resultTimer = null;
+
+        }
+
+
+
+        /*
+         * Start result timer.
+         */
+
+        startResultTimer();
+
+    }
+
+
+
+    /*
+     * ========================================
+     * START RESULT TIMER
+     * ========================================
+     */
+
+
+    function startResultTimer() {
+
+
+        /*
+         * OFF:
+         *
+         * Keep the full calculation
+         * displayed until Clr or a
+         * new number is entered.
+         */
+
+        if (
+            resetTime === "off"
+        ) {
+
+            return;
+
+        }
+
+
+
+        const milliseconds =
+            parseInt(
+                resetTime,
+                10
+            );
+
+
+
+        resultTimer =
+            setTimeout(
+                finishResult,
+                milliseconds
+            );
+
+    }
+
+
+
+    /*
+     * ========================================
+     * RESTART RESULT TIMER
+     * ========================================
+     */
+
+
+    function restartResultTimer() {
+
+
+        if (resultTimer) {
+
+            clearTimeout(
+                resultTimer
+            );
+
+            resultTimer = null;
+
+        }
+
+
+
+        if (
+            currentResult === null ||
+            resetTime === "off"
+        ) {
+
+            return;
+
+        }
+
+
+
+        if (!finishedResult) {
+
+            startResultTimer();
+
+        }
+
+    }
+
+
+
+    /*
+     * ========================================
+     * FINISH RESULT
+     * ========================================
+     */
+
+
+    function finishResult() {
+
+
+        if (
+            currentResult === null
+        ) {
+
+            return;
+
+        }
+
+
+
+        /*
+         * Show only the angle.
+         */
+
+        display.innerHTML =
+            '<span class="result-number">' +
+            currentResult +
+            "°</span>";
+
+
+
+        /*
+         * Show the calculation underneath.
+         */
+
+        calculationHistory.textContent =
+            currentCalculationText;
+
+
+        calculationHistory.className =
+            "calculation-history active";
+
+
+
+        status.textContent =
+            "Ready for next distance.";
+
+
+        status.className =
+            "artillery-status";
+
+
+        finishedResult =
+            true;
+
+
+        resultTimer =
+            null;
+
+    }
+
+
+
+    /*
+     * ========================================
+     * FACTION CHANGE
+     * ========================================
+     *
+     * Faction is intentionally blank
+     * for now.
+     *
+     * Reserved for future use.
+     *
+     * ========================================
+     */
+
+
+    factionSelect.addEventListener(
+        "change",
+        function() {
+
+
+            /*
+             * Future faction-specific
+             * calculations can be added here.
+             */
+
+        }
+    );
+
+
 </script>
 
+
 </body>
+
 </html>
