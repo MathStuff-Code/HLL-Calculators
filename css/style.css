@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    touch-action: manipulation;
 }
 
 
@@ -20,6 +19,10 @@
 }
 
 
+/* =========================
+   BODY
+========================= */
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -34,7 +37,9 @@ body {
 }
 
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 .site-header {
     background: var(--navy);
@@ -92,6 +97,7 @@ body {
 .back-link {
     color: #d8e4ee;
     text-decoration: none;
+
     font-weight: bold;
     font-size: 14px;
 }
@@ -102,7 +108,9 @@ body {
 }
 
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero {
     background:
@@ -128,8 +136,10 @@ body {
 .eyebrow,
 .section-label {
     color: var(--blue);
+
     font-size: 12px;
     font-weight: 800;
+
     letter-spacing: 1.5px;
 }
 
@@ -143,7 +153,9 @@ body {
     margin: 15px 0;
 
     font-size: clamp(40px, 7vw, 68px);
+
     line-height: 1.02;
+
     letter-spacing: -2px;
 }
 
@@ -154,9 +166,14 @@ body {
     color: #c6d4df;
 
     font-size: 18px;
+
     line-height: 1.6;
 }
 
+
+/* =========================
+   SEARCH BOX
+========================= */
 
 .search-box {
     margin-top: 30px;
@@ -165,9 +182,11 @@ body {
 
     display: flex;
     align-items: center;
+
     gap: 12px;
 
     background: white;
+
     border-radius: 12px;
 
     padding: 0 18px;
@@ -194,7 +213,9 @@ body {
 }
 
 
-/* CALCULATOR SECTION */
+/* =========================
+   CALCULATOR SECTION
+========================= */
 
 .calculator-section {
     width: 92%;
@@ -224,15 +245,19 @@ body {
 
 .calculator-count {
     color: var(--muted);
+
     font-size: 14px;
 }
 
 
-/* CATEGORY BUTTONS */
+/* =========================
+   CATEGORY BUTTONS
+========================= */
 
 .category-buttons {
     display: flex;
     flex-wrap: wrap;
+
     gap: 10px;
 
     margin-bottom: 30px;
@@ -241,6 +266,7 @@ body {
 
 .category-btn {
     border: 1px solid var(--border);
+
     background: white;
 
     color: var(--muted);
@@ -257,18 +283,23 @@ body {
 
 .category-btn:hover {
     border-color: var(--blue);
+
     color: var(--blue);
 }
 
 
 .category-btn.active {
     background: var(--navy);
+
     color: white;
+
     border-color: var(--navy);
 }
 
 
-/* CARDS */
+/* =========================
+   CALCULATOR CARDS
+========================= */
 
 .calculator-grid {
     display: grid;
@@ -291,9 +322,11 @@ body {
     background: white;
 
     border: 1px solid var(--border);
+
     border-radius: 16px;
 
     text-decoration: none;
+
     color: var(--text);
 
     transition:
@@ -336,6 +369,7 @@ body {
 
 .card-icon.gray {
     background: #f0f2f4;
+
     filter: grayscale(1);
 }
 
@@ -352,7 +386,9 @@ body {
     color: var(--blue);
 
     font-size: 11px;
+
     font-weight: 800;
+
     letter-spacing: 1px;
 }
 
@@ -375,6 +411,7 @@ body {
 
 .open-calculator {
     margin-top: auto;
+
     padding-top: 20px;
 
     color: var(--blue);
@@ -404,11 +441,13 @@ body {
 
 .coming-soon-label {
     margin-top: auto;
+
     padding-top: 20px;
 
     color: #8a959f;
 
     font-size: 13px;
+
     font-weight: bold;
 }
 
@@ -424,12 +463,15 @@ body {
 }
 
 
-/* CALCULATOR PAGE */
+/* =========================
+   CALCULATOR PAGE
+========================= */
 
 .calculator-page {
     min-height: calc(100vh - 72px);
 
     display: flex;
+
     justify-content: center;
 
     padding: 60px 20px;
@@ -438,6 +480,7 @@ body {
 
 .calculator-container {
     width: 100%;
+
     max-width: 650px;
 }
 
@@ -448,6 +491,7 @@ body {
     margin-bottom: 25px;
 
     color: var(--blue);
+
     text-decoration: none;
 
     font-weight: bold;
@@ -456,7 +500,9 @@ body {
 
 .calculator-header {
     display: flex;
+
     align-items: center;
+
     gap: 20px;
 
     margin-bottom: 30px;
@@ -470,6 +516,7 @@ body {
     flex-shrink: 0;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -495,12 +542,15 @@ body {
 }
 
 
-/* CALCULATOR BOX */
+/* =========================
+   CALCULATOR BOX
+========================= */
 
 .calculator-box {
     background: white;
 
     border: 1px solid var(--border);
+
     border-radius: 18px;
 
     padding: 30px;
@@ -516,9 +566,14 @@ body {
     margin-bottom: 10px;
 
     font-size: 15px;
+
     font-weight: bold;
 }
 
+
+/* =========================
+   INPUT
+========================= */
 
 .input-wrapper {
     position: relative;
@@ -531,6 +586,7 @@ body {
     padding: 17px 80px 17px 16px;
 
     border: 2px solid #dce3e9;
+
     border-radius: 10px;
 
     outline: none;
@@ -561,6 +617,10 @@ body {
 }
 
 
+/* =========================
+   CALCULATE BUTTON
+========================= */
+
 #calculateButton {
     width: 100%;
 
@@ -569,12 +629,15 @@ body {
     padding: 17px;
 
     border: none;
+
     border-radius: 10px;
 
     background: var(--blue);
+
     color: white;
 
     font-size: 17px;
+
     font-weight: bold;
 
     cursor: pointer;
@@ -595,7 +658,9 @@ body {
 }
 
 
-/* RESULT */
+/* =========================
+   RESULT
+========================= */
 
 .result {
     margin-top: 25px;
@@ -614,7 +679,9 @@ body {
     color: var(--muted);
 
     font-size: 12px;
+
     font-weight: 800;
+
     letter-spacing: 1.2px;
 }
 
@@ -625,6 +692,7 @@ body {
     color: var(--blue);
 
     font-size: 60px;
+
     font-weight: 800;
 }
 
@@ -646,7 +714,9 @@ body {
 }
 
 
-/* INFO */
+/* =========================
+   CALCULATOR INFO
+========================= */
 
 .calculator-info {
     display: grid;
@@ -666,6 +736,7 @@ body {
     background: white;
 
     border: 1px solid var(--border);
+
     border-radius: 10px;
 
     text-align: center;
@@ -678,6 +749,7 @@ body {
     margin-bottom: 5px;
 
     font-size: 12px;
+
     text-transform: uppercase;
 
     color: var(--muted);
@@ -686,11 +758,14 @@ body {
 
 .info-item span {
     font-weight: bold;
+
     font-size: 14px;
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 .site-footer {
     padding: 30px 20px;
@@ -710,7 +785,337 @@ body {
 }
 
 
-/* MOBILE */
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+body.dark-mode {
+    background: #111820;
+
+    color: #e8edf2;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+body.dark-mode .site-header {
+    background: #18212b;
+
+    border-color: #2a3744;
+}
+
+
+body.dark-mode .back-link {
+    color: #c4d0da;
+}
+
+
+body.dark-mode .back-link:hover {
+    color: white;
+}
+
+
+/* =========================
+   CALCULATOR PAGE
+========================= */
+
+body.dark-mode .calculator-container {
+    color: #e8edf2;
+}
+
+
+body.dark-mode .calculator-header h1 {
+    color: #e8edf2;
+}
+
+
+body.dark-mode .calculator-header p {
+    color: #9aa9b7;
+}
+
+
+body.dark-mode .calculator-box {
+    background: #18212b;
+
+    border-color: #2a3744;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.25);
+}
+
+
+body.dark-mode .calculator-box label {
+    color: #e8edf2;
+}
+
+
+/* =========================
+   MORTAR / ARTILLERY DISPLAY
+========================= */
+
+body.dark-mode .artillery-display {
+    background: #111820;
+
+    border-color: #2a3744;
+
+    color: #e8edf2;
+}
+
+
+body.dark-mode .artillery-display .result-number {
+    color: #4da3ff;
+}
+
+
+/* =========================
+   HISTORY
+========================= */
+
+body.dark-mode .calculation-history {
+    color: #9aa9b7;
+}
+
+
+body.dark-mode .calculation-history.active {
+    color: #e8edf2;
+}
+
+
+/* =========================
+   KEYPAD
+========================= */
+
+body.dark-mode .key {
+    background: #26323e;
+
+    color: #e8edf2;
+}
+
+
+body.dark-mode .key:hover {
+    background: #334252;
+}
+
+
+body.dark-mode .delete-key {
+    background: #40272a;
+
+    color: #ff7777;
+}
+
+
+body.dark-mode .delete-key:hover {
+    background: #513033;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+body.dark-mode .artillery-status {
+    color: #9aa9b7;
+}
+
+
+body.dark-mode .artillery-status.error {
+    color: #ff7777;
+}
+
+
+/* =========================
+   TOP SETTINGS
+========================= */
+
+body.dark-mode .setting-group label {
+    color: #9aa9b7;
+}
+
+
+body.dark-mode .setting-select {
+    background: #111820;
+
+    border-color: #2a3744;
+
+    color: #e8edf2;
+}
+
+
+body.dark-mode .setting-select:focus {
+    border-color: #0878e8;
+}
+
+
+/* =========================
+   CALCULATOR SETTINGS
+========================= */
+
+body.dark-mode .calculator-settings {
+    background: #18212b;
+
+    border-color: #2a3744;
+}
+
+
+body.dark-mode .calculator-settings h2 {
+    color: #e8edf2;
+}
+
+
+body.dark-mode .bottom-setting {
+    border-color: #2a3744;
+}
+
+
+body.dark-mode .bottom-setting-title {
+    color: #e8edf2;
+}
+
+
+body.dark-mode .bottom-setting-description {
+    color: #9aa9b7;
+}
+
+
+/* =========================
+   CALCULATOR INFO
+========================= */
+
+/*
+ * These rules specifically fix
+ * Minimum / Maximum / Automatic
+ * in dark mode.
+ */
+
+body.dark-mode .calculator-info .info-item {
+    background: #18212b;
+
+    border-color: #2a3744;
+}
+
+
+body.dark-mode .calculator-info .info-item strong {
+    color: #9aa9b7 !important;
+}
+
+
+body.dark-mode .calculator-info .info-item span {
+    color: #e8edf2 !important;
+}
+
+
+/* =========================
+   STANDARD RESULT
+========================= */
+
+body.dark-mode .result {
+    background: #16283a;
+}
+
+
+body.dark-mode .result-label {
+    color: #9aa9b7;
+}
+
+
+body.dark-mode .result-message {
+    color: #9aa9b7;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+body.dark-mode .input-wrapper input {
+    background: #111820;
+
+    border-color: #2a3744;
+
+    color: #e8edf2;
+}
+
+
+body.dark-mode .input-wrapper span {
+    color: #9aa9b7;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+body.dark-mode .calculator-card {
+    background: #18212b;
+
+    border-color: #2a3744;
+
+    color: #e8edf2;
+}
+
+
+body.dark-mode .calculator-card:not(.coming-soon):hover {
+    border-color: #315a7c;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+
+body.dark-mode .card-content h3 {
+    color: #e8edf2;
+}
+
+
+body.dark-mode .card-content p {
+    color: #9aa9b7;
+}
+
+
+body.dark-mode .calculator-count {
+    color: #9aa9b7;
+}
+
+
+body.dark-mode .category-btn {
+    background: #18212b;
+
+    border-color: #2a3744;
+
+    color: #9aa9b7;
+}
+
+
+body.dark-mode .category-btn:hover {
+    border-color: var(--blue);
+
+    color: #4da3ff;
+}
+
+
+body.dark-mode .category-btn.active {
+    background: #26323e;
+
+    border-color: #26323e;
+
+    color: #e8edf2;
+}
+
+
+/* =========================
+   NO RESULTS
+========================= */
+
+body.dark-mode .no-results {
+    color: #9aa9b7;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 850px) {
 
@@ -751,7 +1156,9 @@ body {
 
     .section-heading {
         align-items: flex-start;
+
         flex-direction: column;
+
         gap: 10px;
     }
 
